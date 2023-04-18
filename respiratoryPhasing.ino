@@ -27,11 +27,6 @@ void setup() {
   // Set baud rate
   Serial.begin(9600);
 
-  // Set up input and output pins
-  pinMode(10, INPUT);
-  pinMode(11, INPUT);
-  pinMode(4, OUTPUT);
-
 }
 
 
@@ -76,12 +71,14 @@ void loop() {
     if ((current_time > next_stop_time) || (current_time < next_start_time)){
       Serial.print(", ");
       Serial.print("0");
+      digitalWrite(13, LOW);
 
     }
     // Output trigger at selected phase
     if ((current_time > next_start_time) && (current_time < next_stop_time)){
       Serial.print(", ");
       Serial.print("1000");
+      digitalWrite(13, HIGH);
 
     }
   }
